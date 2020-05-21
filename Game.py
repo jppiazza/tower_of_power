@@ -53,7 +53,7 @@ class Game:
                 self.gameOver = True
                 self.finishGame('winner')
 
-            # Increase the level
+            # Move the block from side to side
             if i % line.speed == 0 and not self.gameOver:
                 pygame.draw.rect(screen, line.colour, [line.topLeftX, line.topLeftY, line.lineWidth, self.blockHeight])
                 pygame.display.update()
