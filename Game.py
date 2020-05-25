@@ -55,6 +55,12 @@ class Game:
 
             # Move the block from side to side
             if i % line.speed == 0 and not self.gameOver:
+                if i < 50000:
+                    text = pygame.font.SysFont("comicsansms", 25)
+                    textSurface = text.render("Press space bar to stop the block.", True, black)
+                    textRect = textSurface.get_rect()
+                    textRect.center = (width/2, height/8)
+                    screen.blit(textSurface, textRect)
                 pygame.draw.rect(screen, line.colour, [line.topLeftX, line.topLeftY, line.lineWidth, self.blockHeight])
                 pygame.display.update()
                 if ((line.topLeftX + line.lineWidth >= width or line.dir == -1) and line.topLeftX > 0):
