@@ -26,6 +26,7 @@ class Game:
         self.blockHeight = blockHeight
         self.gameOver = False
         self.flashNum = 6
+        self.gameStarted = False
 
     def play(self):
 
@@ -41,6 +42,7 @@ class Game:
                     if event.key == pygame.K_ESCAPE:
                         pygame.quit()
                     if event.key == pygame.K_SPACE:
+                        self.gameStarted = True
                         self.calcFallingBlocks(line, tower)
 
             screen.fill(white)
@@ -55,7 +57,7 @@ class Game:
 
             # Move the block from side to side
             if i % line.speed == 0 and not self.gameOver:
-                if i < 50000:
+                if self.gameStarted == False:
                     text = pygame.font.SysFont("comicsansms", 25)
                     textSurface = text.render("Press space bar to stop the block.", True, black)
                     textRect = textSurface.get_rect()
